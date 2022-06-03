@@ -1,4 +1,5 @@
 source
 resize&group
 destination
+qcloud.py
 __pycache__

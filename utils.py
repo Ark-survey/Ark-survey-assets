@@ -22,7 +22,7 @@ def del_dictionary_file(folder):
         if os.path.isfile(file_path):
             os.remove(file_path)
 
-def make_sprites(keys = [],ignoreStr=''):
+def make_sprites(name,keys = [],ignoreStr=''):
     folderPath = "./resize&group"
     resultPath = "./css-sprites"
     if not os.path.exists(resultPath):
@@ -87,8 +87,8 @@ def make_sprites(keys = [],ignoreStr=''):
         else:
           resultStyle += "]\n"
     resultStyle += "}"
-    resultImg.save(resultPath + '/' + keys[0] + str(zoom) + ".png")  # 写入图片
+    resultImg.save(resultPath + '/' + name + '_' + str(zoom) + ".png")  # 写入图片
     # 写入json
-    styleFile = open(resultPath + '/' + keys[0] + str(zoom) + ".json", "w")
+    styleFile = open(resultPath + '/' + name + '_' + str(zoom) + ".json", "w")
     styleFile.write(resultStyle)
     styleFile.close()
