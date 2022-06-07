@@ -1,11 +1,10 @@
 import json
 
-with open('character_table.json') as f:
+new_table = {}
+with open('source/character_table.json',encoding='utf-8') as f:
   character_table = json.load(f)
-  a = {}
   for key in character_table:
     if(key[0] == 'c'):
-      print(key, ":", key)
       del character_table[key]['phases']
       del character_table[key]['talents']
       del character_table[key]['potentialItemId']
@@ -19,16 +18,44 @@ with open('character_table.json') as f:
       del character_table[key]['tokenKey']
       del character_table[key]['itemUsage']
       del character_table[key]['itemDesc']
-      del character_table[key]['isNotObtainable']
       del character_table[key]['itemObtainApproach']
       del character_table[key]['groupId']
       del character_table[key]['teamId']
       del character_table[key]['appellation']
-      c = []
+      c = {}
       for key2 in character_table[key]['skills']:
-        c.append(key2['skillId'])
+        c[key2['skillId']] = {}
       character_table[key]['skills'] = c
-      a[key] = character_table[key]
+      character_table[key]['equips'] = {}
+      character_table[key]['skins'] = {}
+      new_table[key] = character_table[key]
       
-with open('character_table_new.json', 'w') as file:
-  json.dump(a, file)
+      
+with open('source/skill_table.json',encoding='utf-8') as f:
+  skill_table = json.load(f)
+  for key in new_table:
+    i = 0
+    for key2 in new_table[key]['skills']:
+      new_table[key]['skills'][key2] ={ 'index': i,'name': skill_table[key2]['levels'][0]['name'] }
+      i += 1
+
+with open('source/uniequip_table.json',encoding='utf-8') as f:
+  uniequip_table = json.load(f)
+  for key in uniequip_table['equipDict']:
+    charId = uniequip_table['equipDict'][key]['charId']
+    new_table[charId]['equips'][key] = {
+      'name': uniequip_table['equipDict'][key]['uniEquipName'],
+      'typeIcon': uniequip_table['equipDict'][key]['typeIcon'],
+    }
+    
+with open('source/skin_table.json',encoding='utf-8') as f:
+  skin_table = json.load(f)
+  for key in skin_table['charSkins']:
+    if(key[0] == 'c'):
+      charId = skin_table['charSkins'][key]['charId']
+      new_table[charId]['skins'][skin_table['charSkins'][key]['avatarId']] = {
+        'name': skin_table['charSkins'][key]['displaySkin']['skinName'],
+      }
+      
+with open('game-data/character_table.json', 'w') as file:
+  json.dump(new_table, file)

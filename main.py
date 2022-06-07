@@ -13,6 +13,6 @@ img_size_change('destination','resize&group')
 
 make_sprites('char',['char_'])
 make_sprites('uniequip',['uniequip_','default'], "skill_icon_")
-make_sprites('skill',['skill_icon_skchr'])
+make_sprites('skill',['skill_icon_skchr','skill_icon_skcom'])
 
-to_webp('css-sprites')
+# to_webp('css-sprites')

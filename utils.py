@@ -74,8 +74,8 @@ def make_sprites(name,keys = [],ignoreStr=''):
         # 添加对应scss样式
         imagesName[i] = imagesName[i].replace(ignoreStr, "")
         # [x]改为_x，防止css样式问题
-        imagesName[i] = imagesName[i].replace("[", "_")
-        imagesName[i] = imagesName[i].replace("]", "")
+        # imagesName[i] = imagesName[i].replace("[", "_")
+        # imagesName[i] = imagesName[i].replace("]", "")
         resultStyle += "\t\"" + imagesName[i] + "\": [" + str(widthPos * -1) + "," + str(heightPos * -1)
         # 切换到下一张图片
         widthPos += image.size[0]
