@@ -36,7 +36,7 @@ with open('source/skill_table.json',encoding='utf-8') as f:
   for key in new_table:
     i = 0
     for key2 in new_table[key]['skills']:
-      new_table[key]['skills'][key2] ={ 'index': i,'name': skill_table[key2]['levels'][0]['name'] }
+      new_table[key]['skills'][key2] ={ 'index': i,'name': skill_table[key2]['levels'][0]['name'],'iconId': skill_table[key2]['iconId'] }
       i += 1
 
 with open('source/uniequip_table.json',encoding='utf-8') as f:

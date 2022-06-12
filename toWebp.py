@@ -19,3 +19,4 @@ def to_webp(source_folder : str):
             if file_name.find('.png') > -1:
                 thread = Thread(target=main, args=(root,file_name,source_folder))
                 thread.start()
+to_webp('css-sprites')
