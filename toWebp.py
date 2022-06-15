@@ -5,12 +5,11 @@ from threading import Thread
 tinify.key = "vMsNmcZQljq5RN9RfxSsJwsbW0LXrnkl"
 
 def main(root,file_name,source_folder):
-    for i in range(2):
-        file_path = os.path.join(root, file_name)
-        print(file_path)
-        out_file_path = os.path.join(source_folder, file_name.replace('.png', '.webp'))
-        source = tinify.from_file(file_path)
-        source.to_file(out_file_path)
+    file_path = os.path.join(root, file_name)
+    print(file_path)
+    out_file_path = os.path.join(source_folder, file_name.replace('.png', '.webp'))
+    source = tinify.from_file(file_path)
+    source.to_file(out_file_path)
 
 def to_webp(source_folder : str):
     # iterate over all files in source folder

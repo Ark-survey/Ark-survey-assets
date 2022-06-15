@@ -3,6 +3,7 @@ from PIL import Image
  
 # 读取目录下所有匹配文件
 def read_dictionary(folder, keys):
+    print(keys)
     images = []
     for file_name in os.listdir(folder):
         flag = False
@@ -22,8 +23,7 @@ def del_dictionary_file(folder):
         if os.path.isfile(file_path):
             os.remove(file_path)
 
-def make_sprites(name,keys = [],ignoreStr=''):
-    folderPath = "./resize&group"
+def make_sprites(name,keys = [],ignoreStr='',folderPath="./resize&group"):
     resultPath = "./css-sprites"
     if not os.path.exists(resultPath):
         os.makedirs(resultPath)
@@ -31,6 +31,7 @@ def make_sprites(name,keys = [],ignoreStr=''):
     images = []  # 图片
     imagesName = []
     images = read_dictionary(folderPath,keys)
+    print(len(images))
     for root, dirs, files in os.walk(folderPath):
         for file_name in files:
             flag = False
@@ -46,7 +47,7 @@ def make_sprites(name,keys = [],ignoreStr=''):
     # print("css sprite相关参数:")
     p = pow(len(images), 0.5)
     row = int(p) + 1
-    column = int(p)
+    column = int(p) + 1
     # zoom = input("图片缩放大小（倍数）:")
     # if zoom == "":
     zoom = "0.5"

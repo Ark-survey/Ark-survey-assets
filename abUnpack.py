@@ -43,3 +43,4 @@ def unpack_all_assets(source_folder : str, destination_folder : str):
             #         dest, ext = os.path.splitext(dest)
             #         dest = dest + ".png"
             #         data.image.save(dest)
+# unpack_all_assets('source','destination')

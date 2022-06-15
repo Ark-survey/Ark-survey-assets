@@ -23,3 +23,4 @@ def img_size_change(source_folder : str, destination_folder : str):
                 region.save(out_file_path)
             else:
                 im.save(out_file_path)
+# img_size_change('destination','resize&group')
